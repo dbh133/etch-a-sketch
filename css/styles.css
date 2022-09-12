@@ -15,9 +15,12 @@ body {
 
 .container {
 	display: grid;
-	grid-template-columns: auto auto auto auto;
 	justify-content: center;
 	align-items: center;
+}
+
+.container div {
+	aspect-ratio: 1;
 }
 
 button {
