@@ -23,9 +23,20 @@ function colorDivs() {
 	});
 }
 
+function removeColor() {
+	const div = document.querySelectorAll('div');
+
+	div.forEach((divSquare) => {
+		if (divSquare.className !== 'container') {
+			divSquare.style.backgroundColor = 'white';
+		}
+	});
+}
+
 btn.addEventListener('click', () => {
 	gridSize = parseInt(prompt('How many squares per side would you like?'));
 	createGrid(gridSize);
+	removeColor();
 	colorDivs();
 });
 
