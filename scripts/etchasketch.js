@@ -1,40 +1,36 @@
 const body = document.querySelector('.container');
 const btn = document.querySelector('button');
-let gridSize = 16;
 const container = document.querySelector('.container');
 
-for (let i = 0; i < gridSize ** 2; i++) {
-	const div = document.createElement('div');
-	div.style.border = 'solid .5px';
-	body.appendChild(div);
-	container.style.gridTemplateColumns = `repeat(${gridSize}, 10px)`;
-	container.style.gridTemplateRows = `repeat(${gridSize}, 10px)`;
+function createGrid(size = 16) {
+	for (let i = 0; i < size * size; i++) {
+		const grid = document.createElement('div');
+		grid.style.border = 'solid .5px';
+		grid.classList.add('blankGrid');
+		container.appendChild(grid);
+		container.style.gridTemplateColumns = `repeat(${size}, 10px)`;
+		container.style.gridTemplateRows = `repeat(${size}, 10px)`;
+	}
 }
 
-const div = document.querySelectorAll('div');
+function colorDivs() {
+	const div = document.querySelectorAll('div');
+	div.forEach((divSquares) => {
+		if (divSquares.className !== 'container') {
+			divSquares.addEventListener('mouseover', () => {
+				divSquares.style.backgroundColor = `gray `;
+				divSquares.classList.remove('blankGrid');
+				divSquares.classList.add('graySquare');
+			});
+		}
+	});
+}
 
 btn.addEventListener('click', () => {
 	gridSize = parseInt(prompt('How many squares per side would you like?'));
-	div.forEach((divSquares) => {
-		if (divSquares.className !== 'container') {
-			divSquares.style.backgroundColor = `white `;
-		}
-	});
-
-	for (let i = 0; i < gridSize ** 2; i++) {
-		const div = document.createElement('div');
-		div.style.border = 'solid .5px';
-		div.classList.add(`div${i}`);
-		body.appendChild(div);
-		container.style.gridTemplateColumns = `repeat(${gridSize}, 10px)`;
-		container.style.gridTemplateRows = `repeat(${gridSize}, 10px)`;
-	}
+	createGrid(gridSize);
+	colorDivs();
 });
 
-div.forEach((divSquares) => {
-	if (divSquares.className !== 'container') {
-		divSquares.addEventListener('mouseover', () => {
-			divSquares.style.backgroundColor = `gray `;
-		});
-	}
-});
+createGrid();
+colorDivs();
