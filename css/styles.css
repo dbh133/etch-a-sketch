@@ -18,6 +18,11 @@ body {
 	justify-content: center;
 	align-items: center;
 	grid-auto-rows: 0px;
+	width: 250px;
+	height: 250px;
+	border: solid 5px;
+	border-radius: 20px;
+	overflow: hidden;
 }
 
 .container div {
