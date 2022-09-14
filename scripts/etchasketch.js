@@ -35,9 +35,13 @@ function removeColor() {
 
 btn.addEventListener('click', () => {
 	gridSize = parseInt(prompt('How many squares per side would you like?'));
-	createGrid(gridSize);
-	removeColor();
-	colorDivs();
+	if (gridSize < 65 && gridSize > 0) {
+		createGrid(gridSize);
+		removeColor();
+		colorDivs();
+	} else {
+		alert('Please use a number 1 - 64');
+	}
 });
 
 resetBtn.addEventListener('click', () => {
